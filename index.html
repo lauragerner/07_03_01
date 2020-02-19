@@ -4,25 +4,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Godis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>GODIS</h1>
-    <nav>
-        <button class="filter valgt" data-kategori="alle">Alle</button>
-        <button class="filter" data-kategori="forretter">Lakrids</button>
-        <button class="filter " data-kategori="hovedretter">Chokolade</button>
-        <button class="filter" data-kategori="desserter">Karamel</button>
-    </nav>
+    <header>
+        <img src="HVID/godis1.jpg" alt="header billede">
+        <nav>
+            <button class="filter valgt" data-kategori="alle">Alle</button>
+            <button class="filter" data-kategori="forretter">Lakrids</button>
+            <button class="filter " data-kategori="hovedretter">Chokolade</button>
+            <button class="filter" data-kategori="desserter">Karamel</button>
+        </nav>
+    </header>
 
 
     <section class="slikListe">
     </section>
 
     <template>
-        <article>
+        <article class="slik">
             <h2></h2>
             <img src="" alt="">
             <p></p>
@@ -34,28 +36,27 @@
         document.addEventListener("DOMContentLoaded", start);
 
         const endpoint = ("https://spreadsheets.google.com/feeds/cells/1DtCIHRmmuMcvslRhnZEsYGyAs3M25b108rIqoH4N1Hw/1/public/full?alt=json");
-
         let slik = [];
         let filter = "alle";
-
-
         const slikListe = document.querySelector(".slikListe");
         const template = document.querySelector("template");
 
 
         function start() {
+            console.log("start");
             hentJson();
             addEventToButtons();
         }
 
         function addEventToButtons() {
+            console.log("addEventToButtons");
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             })
         }
 
         function filtrering() {
-            console.log("filter");
+            console.log("filtrering");
             filter = this.dataset.kategori;
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.classList.remove("valgt");
@@ -77,7 +78,7 @@
             slikListe.innerHTML = "";
 
             slik.feed.entry.forEach((slik) => {
-                if (filter == "alle" || filter == person.gsx$kategori.$t) {
+                if (filter == "alle" || filter == slik.gsx$kategori.$t) {
                     let klon = template.cloneNode(true).content;
                     klon.querySelector("h2").textContent = slik.gsx$navn.$t;
                     klon.querySelector("p").textContent += slik.gsx$kort.$t;
