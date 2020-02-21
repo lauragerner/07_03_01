@@ -1,41 +1,106 @@
  * {
      box-sizing: border-box;
      background-color: #f8f8f8;
+     margin: 0;
  }
 
  img {
      max-width: 100%;
  }
 
- .personliste {
+ .slikListe {
      display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
      grid-gap: 5px;
-     max-width: 1000px;
+     max-width: 1200px;
      margin: 0 auto;
-     padding: 10px;
-     background: #fff;
+     padding: 4.5vw;
+     background: #FFa5ab;
+     border-radius: 5vw;
  }
 
- h1 {
-     text-align: center;
-     font-size: 11vw;
+ h2 {
+     font-size: 1.5rem;
      cursor: default;
-     color: pink;
-     font-family: helvetica;
-     letter-spacing: 15vw;
+     color: #696969;
+     font-family: helvetica neue;
+ }
+
+ p {
+     font-size: 1rem;
+     cursor: default;
+     color: #696969;
+     font-family: helvetica neue;
  }
 
  nav {
      text-align: center;
+     margin: 1.5vw 10vw 1.5vw 10vw;
  }
 
- button {
-     margin: 2vw 2vw 2vw 2vw;
-     border: 2px solid #ff7c84;
-     border-radius: 40%;
-     height: 4vw;
+ #help_button {
+     position: absolute;
+     top: -1vw;
+     right: -1vw;
      width: 8vw;
+     height: 8vw;
+     padding: 1vw;
+ }
+
+ #help {
+     position: absolute;
+     top: 17vw;
+     left: 25vw;
+     width: 50vw;
+     align-items: center;
+     border-radius: 3vw;
+     background-color: #f9f9f9;
+     border: 2vw solid #FFa5ab;
+     cursor: default;
+ }
+
+ #help .sectionwrapper {
+     display: flex;
+     flex-wrap: wrap;
+ }
+
+ #help img {
+     border: none;
+ }
+
+ #help .col {
+     border: none;
+     margin: 15px;
+     padding: 15px;
+     flex-grow: 1;
+     flex-basis: 200px;
+ }
+
+ #tekst {
+     display: flex;
+     flex-wrap: wrap;
+     margin: 10px;
+     margin: 15px;
+     padding: 15px;
+     flex-grow: 1;
+     flex-basis: 500px;
+ }
+
+ #help #lukke {
+     position: absolute;
+     top: -12vw;
+     left: -6vw;
+     width: 8vw;
+     height: 8vw;
+     padding: 1vw;
+ }
+
+
+ button {
+     margin: 2vw 1.5vw 2vw 1.5vw;
+     border: 3.5px solid #ff7c84;
+     border-radius: 4vw;
+     padding: 1vw 3vw 1vw 3vw;
      font-size: 1.2rem;
      font-family: helvetica;
      cursor: pointer;
@@ -45,10 +110,139 @@
      background-color: lightpink;
  }
 
-
- article {
-     border: 1px solid #000;
-     padding: 10px;
+ button:hover {
+     background-color: rgba(240, 128, 128, 0.26);
  }
 
- @media screen and (min-width:768px) {}
+
+ article {
+     border-radius: 1.5vw;
+     padding: 15px;
+     margin: 0.3vw;
+     cursor: pointer;
+ }
+
+ article img {
+     border: 3px ridge #ff7c84;
+ }
+
+ .grey {
+     filter: grayscale(80%);
+ }
+
+ footer img {
+     width: 15%;
+     height: 15%;
+     padding: 2vw;
+     3
+ }
+
+ footer {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .skjul {
+     display: none;
+ }
+
+ #detalje {
+     position: fixed;
+     top: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.5);
+ }
+
+
+ #detalje article {
+     position: absolute;
+     top: 10vw;
+     left: 25vw;
+     width: 50vw;
+     align-items: center;
+     border-radius: 3vw;
+     background-color: #f9f9f9;
+     border: 2vw solid #FFa5ab;
+     cursor: default;
+ }
+
+ #detalje button {
+     position: absolute;
+     top: 0vw;
+     left: 17vw;
+     width: 8vw;
+     height: 8vw;
+     padding: 1vw;
+ }
+
+
+ .billede {
+     text-align: center;
+ }
+
+ #detalje article img {
+     border: none;
+ }
+
+ #logo {
+     width: 50%;
+     text-align: center;
+ }
+
+ @media screen and (min-width:768px) {
+
+
+     #logo {
+         width: 15%;
+     }
+
+     h2 {
+         font-size: 1.2rem;
+     }
+
+     p {
+         font-size: 0.9rem;
+     }
+
+
+     .billede {
+         text-align: center;
+         border: none;
+     }
+
+
+     #detalje img {
+         width: 45%;
+         border: none;
+         text-align: center;
+     }
+
+     #detalje button {
+         position: absolute;
+         top: 5vw;
+         left: 20vw;
+         width: 4vw;
+         height: 4vw;
+         padding: 1vw;
+     }
+
+     #help #lukke {
+         position: absolute;
+         top: -8vw;
+         left: -6vw;
+         width: 4vw;
+         height: 4vw;
+         padding: 1vw;
+     }
+
+     #help_button {
+         position: absolute;
+         top: 0vw;
+         right: 2vw;
+         width: 4vw;
+         height: 4vw;
+         padding: 1vw;
+     }
+ }

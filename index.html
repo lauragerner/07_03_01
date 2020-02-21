@@ -11,11 +11,13 @@
 <body>
     <header>
         <img src="HVID/godis1.jpg" alt="header billede">
+        <button id="help_button">?</button>
         <nav>
             <button class="filter valgt" data-kategori="alle">Alle</button>
-            <button class="filter" data-kategori="forretter">Lakrids</button>
-            <button class="filter " data-kategori="hovedretter">Chokolade</button>
-            <button class="filter" data-kategori="desserter">Karamel</button>
+            <button class="filter" data-kategori="Chokolade">Chokolade</button>
+            <button class="filter " data-kategori="Vingummi">Vingummi</button>
+            <button class="filter" data-kategori="Lakrids">Lakrids</button>
+            <button class="filter" data-kategori="Karamel">Karamel</button>
         </nav>
     </header>
 
@@ -25,21 +27,54 @@
 
     <template>
         <article class="slik">
-            <h2></h2>
             <img src="" alt="">
+            <h2></h2>
             <p></p>
             <p>Kategori: </p>
         </article>
     </template>
 
+    <section id="detalje" class="skjul">
+        <button id="luk">X</button>
+        <article id="slik">
+            <div class="billede">
+                <img src="">
+            </div>
+            <div class="tekst1">
+                <h2></h2><br>
+                <p></p>
+                <p><br><strong>Indhold:</strong> <span></span></p>
+            </div>
+        </article>
+    </section>
+
+    <section id="help" class="skjul">
+        <button id="lukke">X</button>
+        <article class="sectionwrapper">
+            <div class="col">
+                <img src="logo.png" alt="logo">
+            </div>
+            <div class="col">
+                <p>Find slik for hele familien. Fra lækker chokolade karamel til en salt lakrids abe. Vi har det hele. Find dit ynglings slik og find ud af hvad det indeholder. Godis har et stort udvalg af friskt indpakket slik, slik til kontoret, kundegaver og andre søde sager til enhver sød tand.</p>
+                <p><br>In collaboration with Copenhagen School of Design and Technology</p>
+
+            </div>
+        </article>
+    </section>
+
+    <footer>
+        <img id="logo" src="logo.png" alt="logo">
+    </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", start);
 
-        const endpoint = ("https://spreadsheets.google.com/feeds/cells/1DtCIHRmmuMcvslRhnZEsYGyAs3M25b108rIqoH4N1Hw/1/public/full?alt=json");
+        const endpoint = ("https://spreadsheets.google.com/feeds/list/1DtCIHRmmuMcvslRhnZEsYGyAs3M25b108rIqoH4N1Hw/od6/public/values?alt=json");
         let slik = [];
         let filter = "alle";
         const slikListe = document.querySelector(".slikListe");
         const template = document.querySelector("template");
+        const detalje = document.querySelector("#detalje");
 
 
         function start() {
@@ -53,6 +88,20 @@
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             })
+            document.querySelector("#help_button").addEventListener("click", openHelp);
+        }
+
+        function openHelp() {
+            console.log("openHelp");
+            document.querySelector("#help").classList.remove("skjul");
+
+            document.querySelector("#lukke").addEventListener("click", lukkeHelp);
+        }
+
+
+        function lukkeHelp() {
+            console.log("luk?");
+            document.querySelector("#help").classList.add("skjul");
         }
 
         function filtrering() {
@@ -83,10 +132,25 @@
                     klon.querySelector("h2").textContent = slik.gsx$navn.$t;
                     klon.querySelector("p").textContent += slik.gsx$kort.$t;
                     klon.querySelector("p+p").textContent += slik.gsx$kategori.$t;
-                    klon.querySelector("img").src = slik.gsx$billede.$t;
+                    klon.querySelector("img").src = "HVID/" + slik.gsx$billede.$t + ".jpg";
+                    klon.querySelector(".slik").addEventListener("click", () => {
+                        visDetalje(slik);
+                    });
                     slikListe.appendChild(klon);
                 }
             })
+        }
+
+        function visDetalje(slik) {
+            console.log("visDetalje(slik)");
+            detalje.classList.remove("skjul");
+            detalje.querySelector("#luk").addEventListener("click", () => {
+                detalje.classList.add("skjul");
+            });
+            document.querySelector("#detalje h2").textContent = slik.gsx$navn.$t;
+            document.querySelector("#detalje img").src = "HVID/" + slik.gsx$billede.$t + ".jpg";
+            document.querySelector("#detalje p").textContent = slik.gsx$lang.$t;
+            document.querySelector("#detalje p+p span").textContent = slik.gsx$indhold.$t;
         }
 
     </script>
