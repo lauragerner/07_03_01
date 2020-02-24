@@ -1,7 +1,7 @@
  * {
      box-sizing: border-box;
      background-color: #f8f8f8;
-     margin: 0;
+     margin-top: 2vw;
  }
 
  img {
@@ -14,9 +14,9 @@
      grid-gap: 5px;
      max-width: 1200px;
      margin: 0 auto;
-     padding: 4.5vw;
+     padding: 3.5vw;
      background: #FFa5ab;
-     border-radius: 5vw;
+     border-radius: 3vw;
  }
 
  h2 {
@@ -40,8 +40,8 @@
 
  #help_button {
      position: absolute;
-     top: -1vw;
-     right: -1vw;
+     top: 0vw;
+     right: 1vw;
      width: 8vw;
      height: 8vw;
      padding: 1vw;
@@ -191,8 +191,15 @@
      text-align: center;
  }
 
+ strong {
+     font-weight: bold;
+ }
+
  @media screen and (min-width:768px) {
 
+     * {
+         margin: 0;
+     }
 
      #logo {
          width: 15%;

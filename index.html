@@ -30,7 +30,7 @@
             <img src="" alt="">
             <h2></h2>
             <p></p>
-            <p>Kategori: </p>
+            <p><strong>Kategori: </strong></p>
         </article>
     </template>
 
@@ -131,7 +131,7 @@
                     let klon = template.cloneNode(true).content;
                     klon.querySelector("h2").textContent = slik.gsx$navn.$t;
                     klon.querySelector("p").textContent += slik.gsx$kort.$t;
-                    klon.querySelector("p+p").textContent += slik.gsx$kategori.$t;
+                    klon.querySelector("p+p strong").textContent += slik.gsx$kategori.$t;
                     klon.querySelector("img").src = "HVID/" + slik.gsx$billede.$t + ".jpg";
                     klon.querySelector(".slik").addEventListener("click", () => {
                         visDetalje(slik);
@@ -152,8 +152,5 @@
             document.querySelector("#detalje p").textContent = slik.gsx$lang.$t;
             document.querySelector("#detalje p+p span").textContent = slik.gsx$indhold.$t;
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
