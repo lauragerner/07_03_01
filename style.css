@@ -1,7 +1,10 @@
  * {
      box-sizing: border-box;
      background-color: #f8f8f8;
-     margin-top: 2vw;
+ }
+
+ body {
+     margin: 0;
  }
 
  img {
@@ -17,6 +20,11 @@
      padding: 3.5vw;
      background: #FFa5ab;
      border-radius: 3vw;
+ }
+
+
+ #splash {
+     margin-top: 5vw;
  }
 
  h2 {
@@ -45,23 +53,42 @@
      width: 8vw;
      height: 8vw;
      padding: 1vw;
+     z-index: 1000;
  }
 
  #help {
-     position: absolute;
+     position: fixed;
+     top: 0;
+     width: 100vw;
+     height: 100vh;
+     background: rgba(0, 0, 0, .5);
+     padding-top: 10vw;
+     /*
      top: 17vw;
-     left: 25vw;
-     width: 50vw;
-     align-items: center;
+     left: 0vw;
+
+
      border-radius: 3vw;
      background-color: #f9f9f9;
      border: 2vw solid #FFa5ab;
+*/
      cursor: default;
+     overflow: scroll;
+
+
+
  }
 
  #help .sectionwrapper {
+     width: 90vw;
+     margin: 0 auto;
+     border-radius: 3vw;
+     background-color: #f9f9f9;
+     border: 2vw solid #FFa5ab;
      display: flex;
      flex-wrap: wrap;
+     position: absolute;
+
  }
 
  #help img {
@@ -152,15 +179,27 @@
      top: 0;
      width: 100vw;
      height: 100vh;
-     background-color: rgba(0, 0, 0, 0.5);
+     background-color: transparent;
  }
 
+ .dark-overlay {
+     background-color: rgba(0, 0, 0, 0.5);
+     height: 100%;
+     cursor: pointer;
+ }
+
+ #help .dark-overlay {
+     background-color: rgba(0, 0, 0, 0.5);
+     height: 100%;
+     position: absolute;
+     top: 0vw;
+ }
 
  #detalje article {
      position: absolute;
-     top: 10vw;
-     left: 25vw;
-     width: 50vw;
+     top: 11vw;
+     left: 2vw;
+     width: 95vw;
      align-items: center;
      border-radius: 3vw;
      background-color: #f9f9f9;
@@ -171,10 +210,16 @@
  #detalje button {
      position: absolute;
      top: 0vw;
-     left: 17vw;
+     left: 3vw;
      width: 8vw;
      height: 8vw;
      padding: 1vw;
+ }
+
+ #detalje img {
+     width: 65%;
+     border: none;
+     text-align: center;
  }
 
 
@@ -214,6 +259,10 @@
      }
 
 
+     #splash {
+         margin-top: 0vw;
+     }
+
      .billede {
          text-align: center;
          border: none;
@@ -235,13 +284,21 @@
          padding: 1vw;
      }
 
-     #help #lukke {
+     #detalje article {
          position: absolute;
-         top: -8vw;
-         left: -6vw;
-         width: 4vw;
-         height: 4vw;
-         padding: 1vw;
+         top: 10vw;
+         left: 25vw;
+         width: 50vw;
+         align-items: center;
+         border-radius: 3vw;
+         background-color: #f9f9f9;
+         border: 2vw solid #FFa5ab;
+         cursor: default;
+     }
+
+     #help .sectionwrapper {
+         width: 50vw;
+         left: 26vw;
      }
 
      #help_button {
@@ -252,4 +309,5 @@
          height: 4vw;
          padding: 1vw;
      }
+
  }

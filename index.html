@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <img src="HVID/godis1.jpg" alt="header billede">
+        <img id="splash" src="HVID/godis1.jpg" alt="header billede">
         <button id="help_button">?</button>
         <nav>
             <button class="filter valgt" data-kategori="alle">Alle</button>
@@ -35,7 +35,7 @@
     </template>
 
     <section id="detalje" class="skjul">
-        <button id="luk">X</button>
+        <button id="luk" class="close-btn">X</button>
         <article id="slik">
             <div class="billede">
                 <img src="">
@@ -46,10 +46,10 @@
                 <p><br><strong>Indhold:</strong> <span></span></p>
             </div>
         </article>
+        <div class="dark-overlay"></div>
     </section>
 
     <section id="help" class="skjul">
-        <button id="lukke">X</button>
         <article class="sectionwrapper">
             <div class="col">
                 <img src="logo.png" alt="logo">
@@ -60,6 +60,7 @@
 
             </div>
         </article>
+
     </section>
 
     <footer>
@@ -93,15 +94,7 @@
 
         function openHelp() {
             console.log("openHelp");
-            document.querySelector("#help").classList.remove("skjul");
-
-            document.querySelector("#lukke").addEventListener("click", lukkeHelp);
-        }
-
-
-        function lukkeHelp() {
-            console.log("luk?");
-            document.querySelector("#help").classList.add("skjul");
+            document.querySelector("#help").classList.toggle("skjul");
         }
 
         function filtrering() {
@@ -144,7 +137,10 @@
         function visDetalje(slik) {
             console.log("visDetalje(slik)");
             detalje.classList.remove("skjul");
-            detalje.querySelector("#luk").addEventListener("click", () => {
+            detalje.getElementsByClassName("close-btn")[0].addEventListener("click", () => {
+                detalje.classList.add("skjul");
+            });
+            detalje.querySelector(".dark-overlay").addEventListener("click", () => {
                 detalje.classList.add("skjul");
             });
             document.querySelector("#detalje h2").textContent = slik.gsx$navn.$t;
